@@ -41,6 +41,11 @@ public class Cli {
 				String osVersion = System.getProperty("os.version");
 				String os = osName + " (" + osVersion + ")";
 				System.out.println(os);
+			} else if(command.startsWith("printenv")){
+				String[] parts = command.split(" ");
+				String varName = parts[1];
+				String value = System.getenv(varName);
+				System.out.println(value);
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
