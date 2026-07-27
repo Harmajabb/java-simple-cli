@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Cli {
 
@@ -16,6 +18,10 @@ public class Cli {
 			String output = ""; // A variable named output of type String
 			if (command.equals("exit")) {
 				break; // Forces exit of the while loop
+			} else if(command.equals("date")){
+				Date date = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				System.out.println("Current Date:" + sdf.format(date));
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
