@@ -43,8 +43,17 @@ public class Cli {
 				System.out.println(os);
 			} else if(command.startsWith("printenv")){
 				String[] parts = command.split(" ");
-				String varName = parts[1];
-				String value = System.getenv(varName);
+				String varName;
+				String value;
+					if (parts.length < 2) {
+						value = "";
+					} else {
+    						varName = parts[1];
+    						value = System.getenv(varName);
+    					if (value == null) {
+        					value = "";
+    					}
+					}
 				System.out.println(value);
 			} else {
 				// String concatenation
