@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class Cli {
 
@@ -26,6 +27,9 @@ public class Cli {
 			} else if(command.equals("time")){
 				LocalTime time = LocalTime.now();
 				System.out.println(time);
+			} else if(command.equals("datetime")){
+				LocalDateTime datetime = LocalDateTime.now();
+				System.out.println(datetime);
 			}else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
