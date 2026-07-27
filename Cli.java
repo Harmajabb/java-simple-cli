@@ -1,6 +1,5 @@
 import java.util.Scanner;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 
@@ -21,9 +20,8 @@ public class Cli {
 			if (command.equals("exit")) {
 				break; // Forces exit of the while loop
 			} else if(command.equals("date")){
-				Date date = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				System.out.println(sdf.format(date));
+				LocalDate date = LocalDate.now();
+				System.out.println(date);
 			} else if(command.equals("time")){
 				LocalTime time = LocalTime.now();
 				System.out.println(time);
