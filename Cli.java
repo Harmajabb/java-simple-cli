@@ -36,6 +36,11 @@ public class Cli {
 			} else if(command.equals("userhome")){
 				String userhome = System.getProperty("user.home");
 				System.out.println(userhome);
+			} else if(command.equals("os")){
+				String osName = System.getProperty("os.name");
+				String osVersion = System.getProperty("os.version");
+				String os = osName + " (" + osVersion + ")";
+				System.out.println(os);
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
