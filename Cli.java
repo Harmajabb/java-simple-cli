@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 
 public class Cli {
 
@@ -21,8 +22,11 @@ public class Cli {
 			} else if(command.equals("date")){
 				Date date = new Date();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				System.out.println("Current Date:" + sdf.format(date));
-			} else {
+				System.out.println(sdf.format(date));
+			} else if(command.equals("time")){
+				LocalTime time = LocalTime.now();
+				System.out.println(time);
+			}else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
 			}
