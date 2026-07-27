@@ -33,6 +33,9 @@ public class Cli {
 			} else if(command.equals("useraccount")){
 				String username = System.getProperty("user.name");
 				System.out.println(username);
+			} else if(command.equals("userhome")){
+				String userhome = System.getProperty("user.home");
+				System.out.println(userhome);
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
