@@ -15,8 +15,15 @@ public class Cli {
 		Scanner scanner = new Scanner(System.in); // Listen to the standard input (console)
 		System.out.print("> "); // Prompt
 		while (true) { // Infinite loop
-			String command = scanner.nextLine(); // Get input from console as a string
-			String[] parts = command.split(" ");
+			String input = scanner.nextLine(); // Get input from console as a string
+			String[] parts = input.split(" ", 2);
+			String command = parts[0];
+			String arguments;
+			if (parts.length < 2) {
+			arguments = "";
+			} else {
+			arguments = parts[1];
+			}
 			String output = ""; // A variable named output of type String
 			if (command.equals("exit")) {
 				break; // Forces exit of the while loop
@@ -40,27 +47,19 @@ public class Cli {
 				String osVersion = System.getProperty("os.version");
 				String os = osName + " (" + osVersion + ")";
 				output= os;
-			} else if(parts[0].equals("printenv")){
-				String varName;
+			} else if(command.equals("printenv")){
 				String value;
-					if (parts.length < 2) {
+					if (arguments.length() < 1) {
 						value = "";
 					} else {
-    						varName = parts[1];
-    						value = System.getenv(varName);
+    						value = System.getenv(arguments);
     					if (value == null) {
         					value = "";
     					}
 					}
 				output= value;
-			} else if(parts[0].equals("echo")) {
-				String afterEcho;
-					if(command.length() < 5) {
-						afterEcho = "";
-					} else {
-						afterEcho = command.substring(5);
-					}
-				output= afterEcho;
+			} else if(command.equals("echo")) {
+				output= arguments;
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
