@@ -18,12 +18,7 @@ public class Cli {
 			String input = scanner.nextLine(); // Get input from console as a string
 			String[] parts = input.split(" ", 2);
 			String command = parts[0];
-			String arguments;
-			if (parts.length < 2) {
-			arguments = "";
-			} else {
-			arguments = parts[1];
-			}
+			String arguments = (parts.length < 2) ? "" : parts[1];
 			String output = ""; // A variable named output of type String
 			if (command.equals("exit")) {
 				break; // Forces exit of the while loop
