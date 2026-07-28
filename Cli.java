@@ -22,29 +22,23 @@ public class Cli {
 			} else if(command.equals("date")){
 				LocalDate date = LocalDate.now();
 				output= date.toString();
-				//System.out.println(date);
 			} else if(command.equals("time")){
 				LocalTime time = LocalTime.now();
 				output= time.toString();
-				//System.out.println(time);
 			} else if(command.equals("datetime")){
 				LocalDateTime datetime = LocalDateTime.now();
 				output= datetime.toString();
-				//System.out.println(datetime);
 			} else if(command.equals("useraccount")){
 				String username = System.getProperty("user.name");
-				output= username.toString();
-				//System.out.println(username);
+				output= username;
 			} else if(command.equals("userhome")){
 				String userhome = System.getProperty("user.home");
-				output= userhome.toString();
-				//System.out.println(userhome);
+				output= userhome;
 			} else if(command.equals("os")){
 				String osName = System.getProperty("os.name");
 				String osVersion = System.getProperty("os.version");
 				String os = osName + " (" + osVersion + ")";
-				output= os.toString();
-				//System.out.println(os);
+				output= os;
 			} else if(command.startsWith("printenv")){
 				String[] parts = command.split(" ");
 				String varName;
@@ -58,8 +52,7 @@ public class Cli {
         					value = "";
     					}
 					}
-				output= value.toString();
-				//System.out.println(value);
+				output= value;
 			} else if(command.startsWith("echo")) {
 				String afterEcho;
 					if(command.length() < 5) {
@@ -67,8 +60,7 @@ public class Cli {
 					} else {
 						afterEcho = command.substring(5);
 					}
-				output= afterEcho.toString();
-				//System.out.println(afterEcho);
+				output= afterEcho;
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
