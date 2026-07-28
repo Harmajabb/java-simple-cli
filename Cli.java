@@ -21,24 +21,30 @@ public class Cli {
 				break; // Forces exit of the while loop
 			} else if(command.equals("date")){
 				LocalDate date = LocalDate.now();
-				System.out.println(date);
+				output= date.toString();
+				//System.out.println(date);
 			} else if(command.equals("time")){
 				LocalTime time = LocalTime.now();
-				System.out.println(time);
+				output= time.toString();
+				//System.out.println(time);
 			} else if(command.equals("datetime")){
 				LocalDateTime datetime = LocalDateTime.now();
-				System.out.println(datetime);
+				output= datetime.toString();
+				//System.out.println(datetime);
 			} else if(command.equals("useraccount")){
 				String username = System.getProperty("user.name");
-				System.out.println(username);
+				output= username.toString();
+				//System.out.println(username);
 			} else if(command.equals("userhome")){
 				String userhome = System.getProperty("user.home");
-				System.out.println(userhome);
+				output= userhome.toString();
+				//System.out.println(userhome);
 			} else if(command.equals("os")){
 				String osName = System.getProperty("os.name");
 				String osVersion = System.getProperty("os.version");
 				String os = osName + " (" + osVersion + ")";
-				System.out.println(os);
+				output= os.toString();
+				//System.out.println(os);
 			} else if(command.startsWith("printenv")){
 				String[] parts = command.split(" ");
 				String varName;
@@ -52,7 +58,8 @@ public class Cli {
         					value = "";
     					}
 					}
-				System.out.println(value);
+				output= value.toString();
+				//System.out.println(value);
 			} else if(command.startsWith("echo")) {
 				String afterEcho;
 					if(command.length() < 5) {
@@ -60,7 +67,8 @@ public class Cli {
 					} else {
 						afterEcho = command.substring(5);
 					}
-				System.out.println(afterEcho);
+				output= afterEcho.toString();
+				//System.out.println(afterEcho);
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
