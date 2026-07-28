@@ -53,6 +53,14 @@ public class Cli {
     					}
 					}
 				System.out.println(value);
+			} else if(command.startsWith("echo")) {
+				String afterEcho;
+					if(command.length() < 5) {
+						afterEcho = "";
+					} else {
+						afterEcho = command.substring(5);
+					}
+				System.out.println(afterEcho);
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
