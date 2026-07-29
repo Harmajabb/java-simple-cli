@@ -20,7 +20,7 @@ public class Cli {
 			String command = parts[0];
 			String arguments = (parts.length < 2) ? "" : parts[1];
 			String output = ""; // A variable named output of type String
-			if (command.equals("exit")) {
+			if (command.equals("exit") || command.equals("logout")) {
 				break; // Forces exit of the while loop
 			} else if(command.equals("date")){
 				LocalDate date = LocalDate.now();
@@ -53,7 +53,7 @@ public class Cli {
     					}
 					}
 				output= value;
-			} else if(command.equals("echo")) {
+			} else if(command.equals("echo") || command.equals("print")) {
 				output= arguments;
 			} else {
 				// String concatenation
