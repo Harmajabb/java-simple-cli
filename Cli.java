@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.io.File;
 
 public class Cli {
 
@@ -59,6 +60,20 @@ public class Cli {
 					}
 			} else if(command.equals("echo") || command.equals("print")) {
 				output= arguments;
+			} else if(command.equals("ls")) {
+				if(arguments.isEmpty()){
+					output= "Not a directory";
+				} else {
+					File directory = new File(arguments);
+					if(directory.isDirectory()) {
+						String[] files = directory.list();
+							for(String name : files) {
+								output += name + "\n";
+							}
+					} else {
+					output = "Not a directory";
+					}
+				}
 			} else {
 				// String concatenation
 				output = "Command '" + command + "' not found.";
