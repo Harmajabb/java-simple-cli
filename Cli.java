@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 public class Cli {
 
@@ -45,14 +46,17 @@ public class Cli {
 			} else if(command.equals("printenv")){
 				String value;
 					if (arguments.length() < 1) {
-						value = "";
+						Map<String, String> env = System.getenv();
+						for (String key : env.keySet()){
+							output += key + " = " + env.get(key) + "\n";
+						}
 					} else {
     						value = System.getenv(arguments);
+    						output= value;
     					if (value == null) {
         					value = "";
     					}
 					}
-				output= value;
 			} else if(command.equals("echo") || command.equals("print")) {
 				output= arguments;
 			} else {
