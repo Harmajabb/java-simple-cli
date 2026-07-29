@@ -4,6 +4,11 @@ import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 
 public class Cli {
 
@@ -73,6 +78,16 @@ public class Cli {
 					} else {
 					output = "Not a directory";
 					}
+				}
+			} else if(command.equals("chuck")){
+				Path path = Path.of("chuck.txt");
+				try {
+				List<String> lines = Files.readAllLines(path);
+				Random random = new Random();
+				int index = random.nextInt(lines.size());
+				output = lines.get(index);
+				} catch (IOException e) {
+				output = "Error : Chuck.txt not found";
 				}
 			} else {
 				// String concatenation
