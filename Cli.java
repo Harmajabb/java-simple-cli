@@ -53,15 +53,21 @@ public class Cli {
 				String value;
 					if (arguments.length() < 1) {
 						Map<String, String> env = System.getenv();
-						for (String key : env.keySet()){
-							output += key + " = " + env.get(key) + "\n";
-						}
-					} else {
-    						value = System.getenv(arguments);
-    						output= value;
-    					if (value == null) {
-        					value = "";
-    					}
+						StringBuilder sb = new StringBuilder();
+						String separator = System.lineSeparator();
+							for (String key: env.keySet()){
+								sb.append(key);
+								sb.append(" = ");
+								sb.append(env.get(key));
+								sb.append(separator);
+							}
+							output = sb.toString();
+					}  else {
+                                                value = System.getenv(arguments);
+        						if (value == null) {
+                						value = "";
+        						}
+        					output = value;
 					}
 			} else if(command.equals("echo") || command.equals("print")) {
 				output= arguments;
@@ -70,11 +76,15 @@ public class Cli {
 					output= "Not a directory";
 				} else {
 					File directory = new File(arguments);
+					StringBuilder sb = new StringBuilder();
+					String separator = System.lineSeparator();
 					if(directory.isDirectory()) {
 						String[] files = directory.list();
 							for(String name : files) {
-								output += name + "\n";
+								sb.append(name);
+								sb.append(separator);
 							}
+						output = sb.toString();
 					} else {
 					output = "Not a directory";
 					}
